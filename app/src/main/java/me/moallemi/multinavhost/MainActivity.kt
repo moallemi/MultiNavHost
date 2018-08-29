@@ -1,9 +1,10 @@
 package me.moallemi.multinavhost
 
 import android.os.Bundle
-import android.support.design.widget.BottomNavigationView
-import android.support.v7.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_main.*
+import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.android.synthetic.main.activity_main.message
+import kotlinx.android.synthetic.main.activity_main.navigation
 
 class MainActivity : AppCompatActivity() {
 
