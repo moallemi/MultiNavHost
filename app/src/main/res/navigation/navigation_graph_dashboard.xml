@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/dashboardFragment">
+
+    <fragment
+        android:id="@+id/pageFragment"
+        android:name="me.moallemi.multinavhost.fragments.PageFragment"
+        android:label="PageFragment" >
+        <argument
+            android:name="pageNumber"
+            app:argType="integer" />
+        <argument
+            android:name="pageParent"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="me.moallemi.multinavhost.fragments.DashboardFragment"
+        android:label="DashboardFragment" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="me.moallemi.multinavhost.fragments.HomeFragment"
+        android:label="HomeFragment" />
+    <fragment
+        android:id="@+id/notificationsFragment"
+        android:name="me.moallemi.multinavhost.fragments.NotificationsFragment"
+        android:label="NotificationsFragment" />
+    <action
+        android:id="@+id/action_global_pageFragment"
+        app:destination="@id/pageFragment"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+        app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+</navigation>
