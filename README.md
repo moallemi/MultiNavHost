@@ -48,6 +48,6 @@ The number of `NavHostFragment` in your layout must match the number of menu ite
 
 For further information please review the sample app code.
 
-![](https://github.com/moallemi/MultiNavHost/blob/master/.github/demo.gif?raw=true)
+<img src="https://github.com/moallemi/MultiNavHost/blob/master/.github/demo.gif?raw=true" width="540">
 
 
