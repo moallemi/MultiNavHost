@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import kotlinx.android.synthetic.main.fragment_home.buttonNextPage
-import me.moallemi.multinavhost.NavigationGraphDirections
+import me.moallemi.multinavhost.NavigationGraphMainDirections
 import me.moallemi.multinavhost.R
 
 class HomeFragment : BaseFragment() {
@@ -19,7 +19,7 @@ class HomeFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         buttonNextPage.setOnClickListener {
-            val action = NavigationGraphDirections.ActionGlobalPageFragment(1, "HomeFragment")
+            val action = NavigationGraphMainDirections.ActionGlobalPageFragment(1, "HomeFragment")
             view.findNavController().navigate(action)
         }
     }

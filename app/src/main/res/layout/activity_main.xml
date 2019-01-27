@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:defaultNavHost="false"
-            app:navGraph="@navigation/navigation_graph_home" />
+            app:navGraph="@navigation/navigation_graph_main" />
     </FrameLayout>
 
     <FrameLayout
@@ -37,7 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:defaultNavHost="false"
-            app:navGraph="@navigation/navigation_graph_dashboard" />
+            app:navGraph="@navigation/navigation_graph_main" />
     </FrameLayout>
 
     <FrameLayout
@@ -54,7 +54,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:defaultNavHost="false"
-            app:navGraph="@navigation/navigation_notifications" />
+            app:navGraph="@navigation/navigation_graph_main" />
     </FrameLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

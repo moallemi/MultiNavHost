@@ -32,8 +32,10 @@ dependencies {
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha3'
 
-    implementation "android.arch.navigation:navigation-fragment-ktx:1.0.0-alpha06"
-    implementation "android.arch.navigation:navigation-ui-ktx:1.0.0-alpha06"
+    implementation 'androidx.core:core-ktx:1.0.1'
+
+    implementation "android.arch.navigation:navigation-fragment-ktx:1.0.0-alpha08"
+    implementation "android.arch.navigation:navigation-ui-ktx:1.0.0-alpha08"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.1'

@@ -1,4 +1,4 @@
-package me.moallemi.multinavhost
+package me.moallemi.multinavhost.navigation
 
 import java.io.Serializable
 import java.util.ArrayList

@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import kotlinx.android.synthetic.main.fragment_page.buttonNextPage
 import kotlinx.android.synthetic.main.fragment_page.message
-import me.moallemi.multinavhost.NavigationGraphDirections
+import me.moallemi.multinavhost.NavigationGraphMainDirections
 import me.moallemi.multinavhost.R
 
 class PageFragment : BaseFragment() {
@@ -35,7 +35,7 @@ class PageFragment : BaseFragment() {
         message.text = "Page number $pageNumber, Parent: $pageParent"
 
         buttonNextPage.setOnClickListener {
-            val action = NavigationGraphDirections.ActionGlobalPageFragment(pageNumber!! + 1, "PageFragment")
+            val action = NavigationGraphMainDirections.ActionGlobalPageFragment(pageNumber!! + 1, "PageFragment")
             view.findNavController().navigate(action)
         }
     }

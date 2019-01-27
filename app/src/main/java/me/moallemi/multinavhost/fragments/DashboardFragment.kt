@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import kotlinx.android.synthetic.main.fragment_dashboard.buttonNextPage
-import me.moallemi.multinavhost.NavigationGraphDirections
+import me.moallemi.multinavhost.NavigationGraphMainDirections
 import me.moallemi.multinavhost.R
 
 class DashboardFragment : BaseFragment() {
@@ -19,7 +19,7 @@ class DashboardFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         buttonNextPage.setOnClickListener {
-            val action = NavigationGraphDirections.ActionGlobalPageFragment(1, "DashboardFragment")
+            val action = NavigationGraphMainDirections.ActionGlobalPageFragment(1, "DashboardFragment")
             view.findNavController().navigate(action)
         }
     }
