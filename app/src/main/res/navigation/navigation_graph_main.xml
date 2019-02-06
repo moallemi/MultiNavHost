@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/navigation_graph_main"
-    app:startDestination="@id/emptyFragment">
+    android:id="@+id/navigation_graph_main">
 
     <fragment
         android:id="@+id/pageFragment"
@@ -34,8 +33,4 @@
         app:exitAnim="@anim/nav_default_exit_anim"
         app:popEnterAnim="@anim/nav_default_pop_enter_anim"
         app:popExitAnim="@anim/nav_default_pop_exit_anim" />
-    <fragment
-        android:id="@+id/emptyFragment"
-        android:name="me.moallemi.multinavhost.fragments.EmptyFragment"
-        android:label="EmptyFragment" />
 </navigation>

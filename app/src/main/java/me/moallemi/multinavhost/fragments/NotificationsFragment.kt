@@ -19,7 +19,7 @@ class NotificationsFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         buttonNextPage.setOnClickListener {
-            val action = NavigationGraphMainDirections.ActionGlobalPageFragment(1, "NotificationsFragment")
+            val action = NavigationGraphMainDirections.actionGlobalPageFragment(1, "NotificationsFragment")
             view.findNavController().navigate(action)
         }
     }

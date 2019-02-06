@@ -19,7 +19,7 @@ class DashboardFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         buttonNextPage.setOnClickListener {
-            val action = NavigationGraphMainDirections.ActionGlobalPageFragment(1, "DashboardFragment")
+            val action = NavigationGraphMainDirections.actionGlobalPageFragment(1, "DashboardFragment")
             view.findNavController().navigate(action)
         }
     }

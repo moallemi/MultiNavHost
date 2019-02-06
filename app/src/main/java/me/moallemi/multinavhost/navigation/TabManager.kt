@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.view.isInvisible
 import androidx.navigation.NavController
-import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import kotlinx.android.synthetic.main.activity_main.bottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.dashboardTabContainer
@@ -27,31 +26,29 @@ class TabManager(private val mainActivity: MainActivity) {
 
     val navHomeController: NavController by lazy {
         mainActivity.findNavController(R.id.homeTab).apply {
-            addOnDestinationChangedListener(onDestinationChangedListener)
+            graph = navInflater.inflate(R.navigation.navigation_graph_main).apply {
+                startDestination = startDestinations.getValue(R.id.navigation_home)
+            }
         }
     }
     private val navDashboardController: NavController by lazy {
         mainActivity.findNavController(R.id.dashboardTab).apply {
-            addOnDestinationChangedListener(onDestinationChangedListener)
+            graph = navInflater.inflate(R.navigation.navigation_graph_main).apply {
+                startDestination = startDestinations.getValue(R.id.navigation_dashboard)
+            }
         }
     }
     private val navNotificationsController: NavController by lazy {
         mainActivity.findNavController(R.id.notificationsTab).apply {
-            addOnDestinationChangedListener(onDestinationChangedListener)
+            graph = navInflater.inflate(R.navigation.navigation_graph_main).apply {
+                startDestination = startDestinations.getValue(R.id.navigation_notifications)
+            }
         }
     }
 
     private val homeTabContainer: View by lazy { mainActivity.homeTabContainer }
     private val dashboardTabContainer: View by lazy { mainActivity.dashboardTabContainer }
     private val notificationsTabContainer: View by lazy { mainActivity.notificationsTabContainer }
-
-    private val onDestinationChangedListener =
-            NavController.OnDestinationChangedListener { navController: NavController, navDestination: NavDestination, _: Bundle? ->
-                if (navDestination.id == R.id.emptyFragment) {
-                    navController.popBackStack() // remove EmptyFragment from back stack
-                    navController.navigate(startDestinations.getValue(currentTabId))
-                }
-            }
 
     fun onSaveInstanceState(outState: Bundle?) {
         outState?.putSerializable(KEY_TAB_HISTORY, tabHistory)
@@ -71,17 +68,19 @@ class TabManager(private val mainActivity: MainActivity) {
 
     fun onBackPressed() {
         currentController?.let {
-            if (it.popBackStack().not()) {
+            if (it.currentDestination == null || it.currentDestination?.id == startDestinations.getValue(currentTabId)) {
                 if (tabHistory.size > 1) {
                     val tabId = tabHistory.popPrevious()
                     switchTab(tabId, false)
                     mainActivity.bottomNavigationView.menu.findItem(tabId)?.isChecked = true
                 } else {
-                    tabHistory.clear()
-                    return mainActivity.finish()
+                    mainActivity.finish()
                 }
             }
-        } ?: run { mainActivity.finish() }
+            it.popBackStack()
+        } ?: run {
+            mainActivity.finish()
+        }
     }
 
     fun switchTab(tabId: Int, addToHistory: Boolean = true) {

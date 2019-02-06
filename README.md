@@ -26,22 +26,19 @@ Because `Navigation` class in navigation components use just one back stack for 
     android:name="androidx.navigation.fragment.NavHostFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:defaultNavHost="false"
-    app:navGraph="@navigation/navigation_graph_main" />
+    app:defaultNavHost="false" />
 <fragment
     android:id="@+id/dashboardTab"
     android:name="androidx.navigation.fragment.NavHostFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:defaultNavHost="false"
-    app:navGraph="@navigation/navigation_graph_main" />
+    app:defaultNavHost="false" />
 <fragment
     android:id="@+id/notificationsTab"
     android:name="androidx.navigation.fragment.NavHostFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:defaultNavHost="false"
-    app:navGraph="@navigation/navigation_graph_main" />
+    app:defaultNavHost="false" />
 ```
 
 To avoid creating multiple navigation_graph.xml files, we use only `navigation_graph_main` file and every destination and action must be defined here.
@@ -49,20 +46,18 @@ To avoid creating multiple navigation_graph.xml files, we use only `navigation_g
 ```xml
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/navigation_graph_main"
-    app:startDestination="@id/emptyFragment">
+    android:id="@+id/navigation_graph_main">
 </navigation>
 ```
-Each navigation graph must have `app:startDestination`, But we need
-different start destination for each tab. So we use an empty fragment as start destination for our graph and we pop it later as user navigates through tabs.
+There is no need to define the `app:startDestination` in the navigation graph. We need
+different start destination for each tab. So we handle start destination in `TabManager` class.
 
 ```kotlin
-NavController.OnDestinationChangedListener { navController: NavController, navDestination: NavDestination, _: Bundle? ->
-    if (navDestination.id == R.id.emptyFragment) {
-        navController.popBackStack() // remove EmptyFragment from back stack
-        navController.navigate(startDestinations.getValue(currentTabId))
-    }
-}
+private val startDestinations = mapOf(
+    R.id.navigation_home to R.id.homeFragment,
+    R.id.navigation_dashboard to R.id.dashboardFragment,
+    R.id.navigation_notifications to R.id.notificationsFragment
+)
 ```
 
 For further information please review the sample app code.

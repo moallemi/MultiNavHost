@@ -19,7 +19,7 @@ class HomeFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         buttonNextPage.setOnClickListener {
-            val action = NavigationGraphMainDirections.ActionGlobalPageFragment(1, "HomeFragment")
+            val action = NavigationGraphMainDirections.actionGlobalPageFragment(1, "HomeFragment")
             view.findNavController().navigate(action)
         }
     }
